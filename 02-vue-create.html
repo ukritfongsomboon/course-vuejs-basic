@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!-- <link rel="stylesheet" href="01-basic-html.css"> -->
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="vueapp"></div>
+  </body>
+</html>
+
+<!-- Basic in file -->
+<script>
+  new Vue({
+    data() {
+      return {
+        data: 10,
+      }
+    },
+  }).$mount('#vueapp')
+</script>
+
+<!-- Commonjs -->
+<!-- <script src="./02-basic-vuejs-com.js"></script> -->
+
+<!-- Module ES6 -->
+<!-- <script type="module" src="02-basic-vuejs-mod.js"></script> -->
+<script type="module" src="02-basic-vuejs-mod.mjs"></script>

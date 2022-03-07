@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="01-basic-html.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="vueapp">
+      <div class="header">
+        <h1>
+          <!-- <a href="url">{{text}}</a> -->
+          <!-- <a href="{{url}}">{{text}}</a> -->
+          <a v-bind:href="url">{{text}}</a>
+        </h1>
+      </div>
+      <div class="card">
+        <h2 class="title">Methods</h2>
+        <div class="content" v-once>{{Rand()}}</div>
+      </div>
+
+      <!-- <div class="card">{{html}}</div> -->
+      <div class="card" v-html="html"></div>
+
+      <div class="card">
+        <h2 class="title">Event Binding</h2>
+        <div class="content">
+          <button v-on:click="add(5)">Add</button>
+          <button v-on:click.right="remove()">Remove</button>
+        </div>
+        <div>Result : {{counter}}</div>
+
+        <div class="content">
+          <input type="text" v-on:input="SetName($event , '12345')" />
+        </div>
+        <div>Result : {{name}}</div>
+
+        <div class="content">
+          <form v-on:submit.prevent="SummitForm" v-on:keyup.enter="EnterForm">
+            <input type="text" />
+            <button>Submit</button>
+          </form>
+        </div>
+        <div>Result : {{dataForm}}</div>
+
+        <div class="content">
+          <!-- <input type="text" v-bind:value="dataNew" v-on:input="Oninput" /> -->
+          <input type="text" v-model="dataNew" />
+          <button v-on:click="OnReset">Reset</button>
+        </div>
+        <div>Result : {{dataNew}}</div>
+      </div>
+
+      <div class="card">
+        <h2 class="title">Computed</h2>
+        <div class="content">
+          <div>
+            <input type="text" v-model="dataInputCompute1" />
+          </div>
+          <div>
+            <input type="text" v-model="dataInputCompute2" />
+          </div>
+        </div>
+        <div>Result : {{dataCompute}}</div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- Basic in file -->
+<script>
+  new Vue({
+    data() {
+      return {
+        text: 'vue.js',
+        url: 'https://vuejs.org',
+        html: '<h2 class="title">Raw HTML</h2><div class="content">Hello Raw HTML</div>',
+        counter: 0,
+        name: '',
+        dataForm: '',
+        dataNew: '',
+        dataInputCompute1: '',
+        dataInputCompute2: '',
+      }
+    },
+    computed: {
+      dataCompute() {
+        if (this.dataInputCompute == '') return ''
+        else return this.dataInputCompute1 + '-' + this.dataInputCompute2
+      },
+    },
+    methods: {
+      Oninput(event) {
+        this.dataNew = event.target.value
+      },
+      OnReset() {
+        this.dataNew = ''
+      },
+
+      SummitForm(event) {
+        // event.preventDefault()
+        this.dataForm = event.target[0].value
+      },
+      EnterForm(event) {
+        this.dataForm = event.target.value
+      },
+      // SetName() {
+      //   // # เรานั้นสามารถเรียก "event" ได้เลยโดยไม่ต้อง Pass $event ทาง Argument
+      //   this.name = event.target.value
+      // },
+      // SetName(val) {
+      //   this.name = val
+      // },
+      SetName(e, val) {
+        this.name = val + e.target.value
+      },
+      Rand() {
+        return `${this.text} ${Math.random()}`
+      },
+      add(num) {
+        this.counter = this.counter + num
+        if (this.counter >= 20) this.counter = 0
+      },
+      remove() {
+        if (this.counter > 0) this.counter--
+      },
+    },
+  }).$mount('#vueapp')
+</script>

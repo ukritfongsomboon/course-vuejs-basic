@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="01-basic-html.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="vueapp">
+      <div class="header">
+        <h1>
+          <!-- <a href="url">{{text}}</a> -->
+          <!-- <a href="{{url}}">{{text}}</a> -->
+          <a v-bind:href="url">{{text}}</a>
+        </h1>
+      </div>
+      <div class="card">
+        <h2 class="title">Methods</h2>
+        <div class="content">{{Rand()}}</div>
+      </div>
+
+      <!-- <div class="card">{{html}}</div> -->
+      <div class="card" v-html="html"></div>
+
+      <div class="card">
+        <h2 class="title">Event Binding</h2>
+        <div class="content">
+          <button v-on:click="counter++">Add</button>
+          <button v-on:click="counter--">Remove</button>
+        </div>
+        <div>Result : {{counter}}</div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- Basic in file -->
+<script>
+  new Vue({
+    data() {
+      return {
+        text: 'vue.js',
+        url: 'https://vuejs.org',
+        html: '<h2 class="title">Raw HTML</h2><div class="content">Hello Raw HTML</div>',
+        counter: 0,
+      }
+    },
+    methods: {
+      Rand() {
+        return `${this.text} ${Math.random()}`
+      },
+    },
+  }).$mount('#vueapp')
+</script>

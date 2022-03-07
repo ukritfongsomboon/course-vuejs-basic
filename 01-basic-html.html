@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="01-basic-html.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Example 1  CSS & innerHTML-->
+    <div id="example-id" class="header">
+      <h1>Hello HTML CSS JS</h1>
+    </div>
+
+    <!-- Example 2 DOM with js Edit Data  -->
+    <div class="card">
+      <h2 id="example-data" class="title"></h2>
+    </div>
+
+    <!-- Example 3 DOM with js Add Event and Edit Data -->
+    <div class="card">
+      <h2 class="title">Example 1</h2>
+      <input id="example-input" type="text" />
+      <button onclick="clear()" class="active">Clear</button>
+
+      <!-- Inline CSS -->
+      <div id="example-log" style="font-size: 60px"></div>
+    </div>
+  </body>
+</html>
+
+<!-- Internal CSS -->
+<style>
+  /* * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .header {
+    background-color: #4fc08d;
+    color: white;
+    margin: 3rem auto;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.562);
+    width: 90%;
+  }
+
+  .card {
+    margin: 3rem auto;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.562);
+    width: 90%;
+  }
+
+  .card .title {
+    color: #4fc08d;
+    font-size: 2rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .card input {
+    width: 100%;
+    font: inherit;
+    border: 1px solid #ccc;
+  }
+  .card input:focus {
+    outline: none;
+    border-color: #1b995e;
+    background-color: #d7fdeb;
+  }
+  .card button {
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid #ff0077;
+    background-color: #ff0077;
+    color: white;
+    padding: 0.05rem 1rem;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
+  }
+
+  .card button:hover,
+  .card button:active {
+    background-color: #ec3169;
+    border-color: #ec3169;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+  } */
+
+</style>
+
+<script src="01-basic-html.js"></script>
+<script>
+  // var ele = document.getElementById('example-data')
+  // ele.innerHTML = 'Hello world !!'
+
+  // document.querySelector('input').addEventListener('input', updateValue)
+
+  // function updateValue(e) {
+  //   document.getElementById('example-log').innerHTML = e.target.value
+  // }
+
+  // document.querySelector('button').addEventListener('click', clear)
+  // function clear() {
+  //   document.querySelector('input').value = ''
+  //   document.getElementById('example-log').innerHTML = ''
+  // }
+</script>
