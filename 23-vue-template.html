@@ -9,35 +9,21 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="vueapp">
-      <div class="header">
-        <h1>{{text1}}</h1>
-      </div>
-    </div>
-
-    <div id="vueapp2">
-      <div class="header">
-        <h1>{{text2}}</h1>
-      </div>
-    </div>
+    <div id="vueapp"></div>
   </body>
 </html>
 
 <!-- Basic in file -->
 <script>
   const app1 = new Vue({
+    template: `
+      <div class="header">
+        <h1>{{text1}}</h1>
+      </div>`,
     data() {
       return {
         text1: 'vue.js App 1',
       }
     },
   }).$mount('#vueapp')
-
-  const app2 = new Vue({
-    data() {
-      return {
-        text2: 'vue.js App 2',
-      }
-    },
-  }).$mount('#vueapp2')
 </script>

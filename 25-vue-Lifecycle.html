@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="01-basic-html.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="vueapp">
+      <div class="header">
+        <h1>{{text1}}</h1>
+      </div>
+      <div class="card">
+        <h2 class="title">Refs</h2>
+        <input type="text" ref="refInput" />
+        <button @click="setTex">Update</button>
+        <div>Result : {{input}}</div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- Basic in file -->
+<script>
+  const app1 = new Vue({
+    data() {
+      return {
+        text1: 'vue.js App 1',
+        input: '',
+      }
+    },
+    methods: {
+      setTex() {
+        console.log(this.$refs.refInput)
+        console.dir(this.$refs.refInput)
+        this.input = this.$refs.refInput.value
+      },
+    },
+
+    // Create App
+    // https://v2.vuejs.org/v2/guide/instance.html?redirect=true
+
+    beforeCreate() {
+      console.log('beforeCreated')
+    },
+    created() {
+      console.log('created')
+    },
+    beforeMount() {
+      console.log('before mount')
+    },
+    mounted() {
+      console.log('mounted')
+    },
+
+    // Data Change
+    beforeUpdate() {
+      console.log('before update')
+    },
+    updated() {
+      console.log('updated')
+    },
+
+    //# Remove
+    beforeDestroy() {
+      console.log('before destroyed')
+    },
+    destroyed() {
+      console.log('destroyed')
+    },
+    // }).$mount('#vueapp')
+  })
+
+  app1.$mount('#vueapp')
+
+  setTimeout(function () {
+    app1.$destroy()
+  }, 3000)
+  
+</script>

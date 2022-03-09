@@ -13,11 +13,11 @@
       <div class="header">
         <h1>{{text1}}</h1>
       </div>
-    </div>
-
-    <div id="vueapp2">
-      <div class="header">
-        <h1>{{text2}}</h1>
+      <div class="card">
+        <h2 class="title">Refs</h2>
+        <input type="text" ref="refInput" />
+        <button @click="setTex">Update</button>
+        <div>Result : {{input}}</div>
       </div>
     </div>
   </body>
@@ -29,15 +29,15 @@
     data() {
       return {
         text1: 'vue.js App 1',
+        input: '',
       }
+    },
+    methods: {
+      setTex() {
+        console.log(this.$refs.refInput)
+        console.dir(this.$refs.refInput)
+        this.input = this.$refs.refInput.value
+      },
     },
   }).$mount('#vueapp')
-
-  const app2 = new Vue({
-    data() {
-      return {
-        text2: 'vue.js App 2',
-      }
-    },
-  }).$mount('#vueapp2')
 </script>
