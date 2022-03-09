@@ -23,7 +23,7 @@
         </ul>
       </div> -->
       <my-component title="Title 1" :data="item1"></my-component>
-      <my-component title="Title 2" :data="item2"></my-component>
+      <my-component title="Title 2" :data="item2" @clickitem="childClick"></my-component>
     </div>
   </body>
 </html>
@@ -40,6 +40,11 @@
         item2: [1, 2, 3, 4],
       }
     },
+    methods: {
+      childClick(val) {
+        console.log(val)
+      },
+    },
   })
 
   Vue.component('my-component', {
@@ -48,7 +53,7 @@
         <h2 class="title">{{title}}</h2>
         <button @click="state = !state">{{state ? "Hidden" : "Show"}}</button>
         <ul v-if="state">
-          <li v-for="item in data">{{item}}</li>
+          <li v-for="item in data" @click="$emit('clickitem',item)">{{item}}</li>
         </ul>
       </div>`,
     data() {
