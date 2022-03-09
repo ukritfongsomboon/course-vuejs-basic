@@ -22,8 +22,8 @@
           <li>Ukrit Fongsomboon</li>
         </ul>
       </div> -->
-      <my-component ref="c1"></my-component>
-      <my-component></my-component>
+      <my-component title="Title 1" :data="item1"></my-component>
+      <my-component title="Title 2" :data="item2"></my-component>
     </div>
   </body>
 </html>
@@ -36,34 +36,32 @@
         text1: 'vue.js App 1',
         input: '',
         // state: false,
+        item1: ['a', 'b', 'c'],
+        item2: [1, 2, 3, 4],
       }
-    },
-    mounted() {
-      console.dir(this.$refs.c1.dataComponent)
-      this.$refs.c1.ShowNameComponent()
     },
   })
 
   Vue.component('my-component', {
-    template: `<div class="card">
-        <h2 class="title">Component</h2>
+    template: `
+      <div class="card">
+        <h2 class="title">{{title}}</h2>
         <button @click="state = !state">{{state ? "Hidden" : "Show"}}</button>
         <ul v-if="state">
-          <li>Ukrit Fongsomboon</li>
-          <li>Ukrit Fongsomboon</li>
-          <li>Ukrit Fongsomboon</li>
+          <li v-for="item in data">{{item}}</li>
         </ul>
       </div>`,
     data() {
       return {
         state: false,
-        dataComponent: 99,
       }
     },
-    methods: {
-      ShowNameComponent() {
-        console.warn('Component : ', this.dataComponent)
-      },
+
+    // https://vuejs.org/guide/components/props.html
+    // props: ['title'],
+    props: {
+      title: String,
+      data: Array,
     },
   })
 
