@@ -15,15 +15,15 @@
       </div>
 
       <div class="card">
-        <div class="title">Create Card</div>
+        <h2 class="title">Create Card</h2>
         <input type="text" v-model="currentName" />
-        <button v-show="currentName.length > 0" @click="createCard">Send</button>
+        <button v-show="currentName.length > 0" @click="createCard">CREATE</button>
       </div>
 
-      <div class="card" v-for="(item) in data">
-        <div class="title">{{item}}</div>
+      <div class="card" v-for="(item,idx) in data" :key="item" @click="removeCard(idx)">
+        <h2 class="title">{{item}}</h2>
+        <input type="text" @click.stop />
       </div>
-      
     </div>
   </body>
 </html>
@@ -41,8 +41,11 @@
     methods: {
       createCard() {
         this.data.push(this.currentName)
+        this.currentName = ''
       },
-      removeCard() {},
+      removeCard(idx) {
+        this.data.splice(idx, 1)
+      },
     },
   }).$mount('#vueapp')
 </script>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="01-basic-html.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="vueapp">
+      <div class="header">
+        <h1>{{text}}</h1>
+      </div>
+
+      <div class="card">
+        <h2 class="title">Create Card</h2>
+        <input type="text" v-model="currentName" />
+        <button v-show="currentName.length > 0" @click="createCard">CREATE</button>
+      </div>
+
+      <div class="card" v-for="(item,idx) in data" :key="item" @click="removeCard(idx)">
+        <h2 class="title">{{item}}</h2>
+        <input type="text" @click.stop />
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- Basic in file -->
+<script>
+  new Vue({
+    data() {
+      return {
+        text: 'vue.js',
+        currentName: '',
+        data: [],
+      }
+    },
+    methods: {
+      createCard() {
+        this.data.push(this.currentName)
+        this.currentName = ''
+      },
+      removeCard(idx) {
+        this.data.splice(idx, 1)
+      },
+    },
+  }).$mount('#vueapp')
+
+  // Js Work
+  let name = 'ukrit'
+  let fullname = name + 'Fongsomboon'
+  console.log(fullname)
+
+  name = 'first'
+  console.log(fullname)
+
+  // Vue Work
+  const data = {
+    name: 'ukrit',
+    fullname: 'xxx',
+  }
+  const handler = {
+    set(item, key, value) {
+      // console.log(item)
+      // console.log(`key :${key} | value : ${value}`)
+      if (key === 'name') item.fullname = value + 'Fongsomboon'
+      item.name = value
+    },
+  }
+  const proxy = new Proxy(data, handler)
+  console.log(proxy.fullname)
+  proxy.name = 'first'
+  console.log(proxy.fullname)
+  
+</script>
