@@ -22,8 +22,15 @@
           <li>Ukrit Fongsomboon</li>
         </ul>
       </div> -->
-      <my-component ref="c1"></my-component>
-      <my-component></my-component>
+      <div class="card">
+        <h2 class="title">{{parent_title_1}}</h2>
+        <my-component ref="c1"></my-component>
+      </div>
+
+      <div class="card">
+        <h2 class="title">{{parent_title_2}}</h2>
+        <my-component></my-component>
+      </div>
     </div>
   </body>
 </html>
@@ -36,6 +43,8 @@
         text1: 'vue.js App 1',
         input: '',
         // state: false,
+        parent_title_1: 'Parent 1',
+        parent_title_2: 'Parent 2',
       }
     },
     mounted() {
@@ -46,7 +55,7 @@
 
   Vue.component('my-component', {
     template: `<div class="card">
-        <h2 class="title">Component</h2>
+        <h2 class="title">child 1</h2>
         <button @click="state = !state">{{state ? "Hidden" : "Show"}}</button>
         <ul v-if="state">
           <li>Ukrit Fongsomboon</li>

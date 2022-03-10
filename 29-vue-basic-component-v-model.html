@@ -16,12 +16,17 @@
 
       <div class="card">
         <h2 class="title">{{parent_title_1}}</h2>
-        <my-component ref="c1" title="Child 1" :data="item1" @clickitem="childClick"></my-component>
+        <my-component
+          ref="c1"
+          title="Child 1"
+          :parent_name="parent_title_1"
+          @update_parent="(val) => parent_title_1 = val"
+        ></my-component>
       </div>
 
       <div class="card">
         <h2 class="title">{{parent_title_2}}</h2>
-        <my-component title="Child 2" :data="item2"></my-component>
+        <my-component2 title="Child 2" v-model="parent_title_2"></my-component2>
       </div>
     </div>
   </body>
@@ -35,39 +40,68 @@
         text1: 'vue.js App 1',
         input: '',
         // state: false,
+        my_vmodel: '',
         parent_title_1: 'Parent 1',
         parent_title_2: 'Parent 2',
-        item1: ['a', 'b', 'c'],
-        item2: [1, 2, 3, 4],
       }
     },
-    methods: {
-      childClick(val) {
-        alert(val)
-      },
-    },
+    methods: {},
   })
 
   Vue.component('my-component', {
     template: `
       <div class="card">
         <h2 class="title">{{title}}</h2>
-        <button @click="state = !state">{{state ? "Hidden" : "Show"}}</button>
-        <ul v-if="state">
-          <li v-for="item in data" @click="$emit('clickitem',item)">{{item}}</li>
-        </ul>
+        <input type="text" :value="parent_name" @input="updateParentName"></input>
       </div>`,
     data() {
       return {
         state: false,
       }
     },
-
+    methods: {
+      updateParentName(e) {
+        this.$emit('update_parent', e.target.value)
+      },
+    },
     // https://vuejs.org/guide/components/props.html
-    // props: ['title'],
     props: {
       title: String,
-      data: Array,
+      parent_name: String,
+    },
+  })
+
+  Vue.component('my-component2', {
+    template: `
+      <div class="card">
+        <h2 class="title">{{title}}</h2>
+        <input type="text" :value="dataVmodel" @input="updateParentName"></input>
+      </div>`,
+    data() {
+      return {
+        state: false,
+      }
+    },
+    computed: {
+      dataVmodel: {
+        get() {
+          return this.value
+        },
+        set(val) {
+          this.$emit('input', val)
+        },
+      },
+    },
+    methods: {
+      updateParentName(e) {
+        //   this.$emit('update_parent', e.target.value)
+        this.dataVmodel = e.target.value
+      },
+    },
+    // https://vuejs.org/guide/components/props.html
+    props: {
+      title: String,
+      value: String,
     },
   })
 

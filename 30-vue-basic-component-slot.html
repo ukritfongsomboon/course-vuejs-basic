@@ -13,16 +13,18 @@
       <div class="header">
         <h1>{{text1}}</h1>
       </div>
-
-      <div class="card">
-        <h2 class="title">{{parent_title_1}}</h2>
-        <my-component ref="c1" title="Child 1" :data="item1" @clickitem="childClick"></my-component>
-      </div>
-
-      <div class="card">
-        <h2 class="title">{{parent_title_2}}</h2>
-        <my-component title="Child 2" :data="item2"></my-component>
-      </div>
+      <!-- <div class="card">
+        <h2 class="title">Component</h2>
+        <button @click="state = !state">{{state ? "Hidden" : "Show"}}</button>
+        <ul v-if="state">
+          <li>Ukrit Fongsomboon</li>
+          <li>Ukrit Fongsomboon</li>
+          <li>Ukrit Fongsomboon</li>
+        </ul>
+      </div> -->
+      <my-component title="Title 2">
+        <h2>Hello slot</h2>
+      </my-component>
     </div>
   </body>
 </html>
@@ -35,15 +37,13 @@
         text1: 'vue.js App 1',
         input: '',
         // state: false,
-        parent_title_1: 'Parent 1',
-        parent_title_2: 'Parent 2',
         item1: ['a', 'b', 'c'],
         item2: [1, 2, 3, 4],
       }
     },
     methods: {
       childClick(val) {
-        alert(val)
+        console.log(val)
       },
     },
   })
@@ -54,7 +54,7 @@
         <h2 class="title">{{title}}</h2>
         <button @click="state = !state">{{state ? "Hidden" : "Show"}}</button>
         <ul v-if="state">
-          <li v-for="item in data" @click="$emit('clickitem',item)">{{item}}</li>
+          <slot></slot>
         </ul>
       </div>`,
     data() {
