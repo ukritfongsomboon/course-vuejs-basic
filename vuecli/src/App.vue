@@ -1,32 +1,120 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <!-- Step 1 -->
+    <!-- <div class="header">
+      <h1 class="title">{{ title }}</h1>
+    </div> -->
+    <!-- Step 2 -->
+    <!-- <com1></com1>
+    <com-basic2></com-basic2> -->
+
+    <!-- Step 3 -->
+    <com-toolbar v-model="menu"></com-toolbar>
+    <router-view></router-view>
   </div>
 </template>
 
+<script>
+// import com1 from '@/components/BasicComponent/com-basic-01.vue'
+export default {
+  components: {
+    // com1,
+  },
+  data() {
+    return {
+      title: 'Vue Cli',
+      menu: [
+        { name: 'page1', path: '/', text: 'Page1' },
+        { name: 'page2', path: '/page2', text: 'Page2' },
+      ],
+    }
+  },
+}
+</script>
+
+<style lang="scss" scoped></style>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  background-color: #4fc08d;
+  color: white;
+  margin: 3rem auto;
   text-align: center;
-  color: #2c3e50;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.562);
+  width: 90%;
 }
 
-nav {
-  padding: 30px;
+.card {
+  margin: 3rem auto;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.562);
+  width: 90%;
 }
 
-nav a {
+.card .title {
+  color: #4fc08d;
+  font-size: 2rem;
+  /* border-bottom: 2px solid #ccc; */
+  margin: 0 0 1rem 0;
+}
+
+.card .content {
+  font-size: 20px;
+  margin-top: 3rem;
+}
+
+.card .result {
+  width: 90%;
+  max-width: 500px;
+  font-size: 1.25rem;
   font-weight: bold;
-  color: #2c3e50;
+  border: 1px solid #4fc08d;
+  background-color: #4fc08d;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 25px;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+.card,
+.toolbar input {
+  max-width: 500px;
+  width: 90%;
+  font: inherit;
+  border: 1px solid #ccc;
+}
+.card input:focus {
+  outline: none;
+  border-color: #1b995e;
+  background-color: #d7fdeb;
+}
+.card,
+.toolbar button {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid #ff0077;
+  background-color: #ff0077;
+  color: white;
+  padding: 0.05rem 1rem;
+  margin: 0.2rem;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
+}
+
+.card,
+.toolbar button:hover,
+.card,
+.toolbar button:active {
+  background-color: #ec3169;
+  border-color: #ec3169;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }
 </style>
