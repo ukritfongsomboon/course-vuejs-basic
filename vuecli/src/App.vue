@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <v-app>
     <!-- Step 1 -->
     <!-- <div class="header">
       <h1 class="title">{{ title }}</h1>
@@ -9,9 +9,8 @@
     <com-basic2></com-basic2> -->
 
     <!-- Step 3 -->
-    <com-toolbar v-model="menu"></com-toolbar>
     <router-view></router-view>
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -33,7 +32,7 @@ export default {
 </script>
 
 <style lang="scss" scoped></style>
-<style>
+<style scoped>
 * {
   padding: 0;
   margin: 0;

@@ -4,9 +4,7 @@
 
 <script>
 export default {
-  created() {
-    console.log('page2')
-  },
+
 }
 </script>
 
