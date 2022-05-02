@@ -13,13 +13,15 @@ export default new Vuetify({
         third: '#edAF88',
         text1: '#ffffff',
         text2: '#4fc08d',
+        text3: '#000000',
       },
       dark: {
         primary: '#454545 ',
         secondary: '#E91E63',
         third: '#edAF88',
         text1: '#4fc08d',
-        text2: '#4fc08d'
+        text2: '#4fc08d',
+        text3: '#4fc08d',
       },
     },
   },

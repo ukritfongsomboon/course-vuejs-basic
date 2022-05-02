@@ -4,6 +4,7 @@ import login from '@/views/view-login.vue'
 import home from '@/views/view-home.vue'
 import page1 from '../views/home/view-page1.vue'
 import page2 from '../views/home/view-page2.vue'
+import page3 from '../views/home/view-page3.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -18,6 +19,7 @@ const routes = [
     children: [
       { path: 'page1', name: 'page1', component: page1, meta: { requireLogin: true } },
       { path: 'page2', name: 'page2', component: page2, meta: { requireLogin: true } },
+      { path: 'page3', name: 'page3', component: page3, meta: { requireLogin: true } }
     ],
   },
   // { path: '/page2', name: 'page2', component: page2 },

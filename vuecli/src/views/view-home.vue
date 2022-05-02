@@ -36,6 +36,7 @@ export default {
       this.menu = [
         { name: 'page1', path: 'page1', text: 'Page 1', icon: 'mdi-clock-time-four-outline' },
         { name: 'page2', path: 'page2', text: 'Page 2', icon: 'mdi-clock-time-four-outline' },
+        { name: 'page3', path: 'page3', text: 'Page 3', icon: 'mdi-clock-time-four-outline' },
       ]
     },
   },
