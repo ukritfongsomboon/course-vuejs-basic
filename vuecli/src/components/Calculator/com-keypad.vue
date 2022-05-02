@@ -6,7 +6,7 @@
           <v-col>
             <v-btn
               color="text2"
-              class="text1--text text-h4"
+              class="white--text text-h4"
               block
               @click="$store.dispatch('add', 5)"
               >+</v-btn
@@ -15,7 +15,7 @@
           <v-col>
             <v-btn
               color="secondary"
-              class="text1--text text-h4"
+              class="white--text text-h4"
               block
               @click="$store.dispatch('sub', 5)"
               >-</v-btn

@@ -55,13 +55,15 @@ export default {
 
     // TODO Set backend Engine
     // console.log('\nBefore Set backend :\t', window.tf.getBackend())
-    window.tf.setBackend('webgl')
+    // window.tf.setBackend('webgl')
     // console.log('After Set backend :\t', window.tf.getBackend())
   },
 
   methods: {
     Upload(e) {
       this.loading = true
+      this.className = ''
+      
       // Refs https://www.tabnine.com/code/javascript/functions/%40tensorflow%2Ftfjs-core/resizeBilinear
       // Refs https://deeplizard.com/learn/video/nnxJyxtIuFM
       // Refs https://bobbyhadz.com/blog/javascript-get-index-of-max-value-in-array

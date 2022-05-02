@@ -62,6 +62,7 @@ export default {
   methods: {
     Upload(e) {
       this.loading = true
+      this.className = []
 
       // TODO  Get File Upload
       // this.urlImage = URL.createObjectURL(e.target.files[0])
